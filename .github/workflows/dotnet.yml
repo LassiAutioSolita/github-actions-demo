@@ -49,4 +49,4 @@ jobs:
     - name: Setup VSTest.console.exe
       uses: darenm/Setup-VSTest@v1.1.1
     - name: VSTest
-      run: vstest.console.exe IntegrationTests/IntegrationTests/IntegrationTests.dll
+      run: vstest.console.exe IntegrationTests\IntegrationTests.dll
