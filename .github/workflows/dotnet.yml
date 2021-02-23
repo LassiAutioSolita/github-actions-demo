@@ -45,4 +45,8 @@ jobs:
       uses: actions/download-artifact@v2.0.8
       with:
         name: IntegrationTests
-      
+        path: IntegrationTests
+    - name: Setup VSTest.console.exe
+      uses: darenm/Setup-VSTest@v1.1.1
+    - name: VSTest
+      run: vstest.console.exe
