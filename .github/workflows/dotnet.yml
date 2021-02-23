@@ -17,8 +17,15 @@ jobs:
       run: dotnet test tests/AzDevOpsDemoWebApplicationUnitTests/AzDevOpsDemoWebApplicationUnitTests.csproj
     - name: Publish the app
       run: dotnet publish -c Release -o app AzDevOpsDemoWebApplication/AzDevOpsDemoWebApplication.csproj
-    - name: Upload app artifact
+    - name: Upload my-app artifact
       uses: actions/upload-artifact@v2.2.2
       with:
         name: app
         path: app
+    - name: Publish integration tests
+      run: dotnet publish -c Release -o IntegrationTests tests/IntegrationTests/IntegrationTests.csproj
+    - name: Upload IntegrationTests artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: IntegrationTests
+        path: IntegrationTests
