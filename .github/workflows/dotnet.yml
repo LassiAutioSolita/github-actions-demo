@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Run unit tests
+      run: dotnet test *UnitTests.csproj
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Run unit tests
-      run: dotnet test **/AzDevOpsDemoWebApplicationUnitTests.csproj --no-build --verbosity normal
