@@ -60,6 +60,7 @@ jobs:
       uses: darenm/Setup-VSTest@v1.1.1
     - name: VSTest
       run: vstest.console.exe IntegrationTests\IntegrationTests.dll /Logger:trx /ResultsDirectory:IntegrationTestResults
+    - uses: actions/checkout@v2  # For some reason below dorny/test-reporter needs to run with git
     - name: Publish Integration Test Results
       uses: dorny/test-reporter@v1.2.0
       if: always()
