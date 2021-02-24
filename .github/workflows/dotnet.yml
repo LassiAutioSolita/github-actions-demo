@@ -14,13 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit tests
-      run: dotnet test tests/AzDevOpsDemoWebApplicationUnitTests/AzDevOpsDemoWebApplicationUnitTests.csproj --logger trx --results-directory TestResults
+      run: dotnet test tests/AzDevOpsDemoWebApplicationUnitTests/AzDevOpsDemoWebApplicationUnitTests.csproj --logger trx --results-directory UnitTestResults
     - name: Publish Unit Test Results
       uses: dorny/test-reporter@v1.2.0
       if: always()
       with:
-        name: TRX format test report
-        path: TestResults/*.trx
+        name: Unit Test Results
+        path: UnitTestResults/*.trx
         reporter: dotnet-trx
         fail-on-error: 'true'
     - name: Publish the app
@@ -59,4 +59,12 @@ jobs:
     - name: Setup VSTest.console.exe
       uses: darenm/Setup-VSTest@v1.1.1
     - name: VSTest
-      run: vstest.console.exe IntegrationTests\IntegrationTests.dll
+      run: vstest.console.exe IntegrationTests\IntegrationTests.dll /Logger:trx /ResultsDirectory:IntegrationTestResults
+    - name: Publish Integration Test Results
+      uses: dorny/test-reporter@v1.2.0
+      if: always()
+      with:
+        name: Integration Test Results
+        path: IntegrationTestResults/*.trx
+        reporter: dotnet-trx
+        fail-on-error: 'true'
