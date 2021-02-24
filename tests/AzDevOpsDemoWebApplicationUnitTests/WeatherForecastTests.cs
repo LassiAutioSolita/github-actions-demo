@@ -13,11 +13,5 @@ namespace AzDevOpsDemoWebApplicationUnitTests
             sut.TemperatureC = 38;
             Assert.AreEqual(100, sut.TemperatureF);
         }
-
-        [TestMethod]
-        public void FailingTest()
-        {
-            Assert.Fail("testing PR checks");
-        }
     }
 }
