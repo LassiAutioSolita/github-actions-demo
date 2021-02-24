@@ -14,9 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit tests
-      run: |
-        dotnet test tests/AzDevOpsDemoWebApplicationUnitTests/AzDevOpsDemoWebApplicationUnitTests.csproj
-        --logger trx --results-directory TestResults
+      run: dotnet test tests/AzDevOpsDemoWebApplicationUnitTests/AzDevOpsDemoWebApplicationUnitTests.csproj --logger trx --results-directory TestResults
     - name: Publish Unit Test Results
       uses: dorny/test-reporter@v1.2.0
       if: always()
