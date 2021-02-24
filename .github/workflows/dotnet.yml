@@ -68,4 +68,3 @@ jobs:
         name: Integration Test Results
         path: IntegrationTestResults/*.trx
         reporter: dotnet-trx
-        fail-on-error: 'true'
